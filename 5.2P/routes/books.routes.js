@@ -5,7 +5,7 @@ const router = express.Router();
 
 const booksController = require("../controllers/books.controller");
 
-// Routes (no logic here)
+// Routes 
 router.get("/api/books", booksController.getAllBooks);
 router.get("/api/books/:id", booksController.getBookById);
 
