@@ -48,3 +48,86 @@
   border-radius: 8px;
   padding: 40px;
 }
+
+/* Modal styling */
+#add-book-modal {
+  border-radius: 16px;
+}
+
+#add-book-modal .modal-content {
+  border-radius: 16px;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  padding: 40px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+#add-book-modal .modal-content h4 {
+  color: #2c3e50;
+  font-weight: 700;
+  margin-bottom: 30px;
+  font-size: 1.8rem;
+}
+
+/* Form input styling */
+#add-book-modal .input-field {
+  margin-bottom: 25px;
+}
+
+#add-book-modal .input-field input {
+  border-bottom: 2px solid #26a69a !important;
+  border-radius: 8px 8px 0 0;
+  padding: 12px 8px !important;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+#add-book-modal .input-field input:focus {
+  border-bottom: 2px solid #009688 !important;
+  box-shadow: 0 2px 8px rgba(0, 150, 136, 0.2);
+  background-color: rgba(255, 255, 255, 1);
+}
+
+#add-book-modal .input-field label {
+  color: #2c3e50;
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+/* Modal footer styling */
+#add-book-modal .modal-footer {
+  background: linear-gradient(135deg, #e0e7ff 0%, #d4e4f7 100%);
+  border-radius: 0 0 16px 16px;
+  padding: 20px 40px;
+  display: flex;
+  gap: 15px;
+  justify-content: flex-end;
+}
+
+#add-book-modal .modal-footer .btn-flat {
+  color: #2c3e50;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border-radius: 8px;
+  padding: 0 20px;
+}
+
+#add-book-modal .modal-footer .btn-flat:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+#add-book-modal .modal-footer .btn {
+  background: linear-gradient(135deg, #26a69a 0%, #009688 100%);
+  color: white;
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 0 30px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 150, 136, 0.3);
+}
+
+#add-book-modal .modal-footer .btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 150, 136, 0.4);
+  background: linear-gradient(135deg, #009688 0%, #00796b 100%);
+}
