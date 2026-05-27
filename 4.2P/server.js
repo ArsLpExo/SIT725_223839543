@@ -26,18 +26,6 @@ const items = [
 ];
 
 //POST route
-// app.post('/api/items', (req, res) => {
-//   const newBook = {
-//     id: items.length + 1,
-//     title: req.body.title,
-//     author: req.body.author,
-//     image: req.body.image
-//   };
-
-//   items.push(newBook);
-//   res.json(newBook);
-// });
-
 app.post('/api/items', async (req, res) => {
   try {
     const { title, author, image, category, price, rating } = req.body;
@@ -62,10 +50,6 @@ app.post('/api/items', async (req, res) => {
 
 
 //GET REST endpoint
-// app.get('/api/items', (req, res) => {
-//   res.json(items);
-// });
-
 app.get('/api/items', async (req, res) => {
   const books = await Book.find();
   res.json(books);
