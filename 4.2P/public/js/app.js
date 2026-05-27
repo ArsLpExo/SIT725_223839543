@@ -15,6 +15,30 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+// function renderCards(items) {
+//   const container = document.getElementById('cards-container');
+//   container.innerHTML = '';
+
+//   items.forEach(item => {
+//     const col = document.createElement('div');
+//     col.className = 'col s12 m6 l4';
+
+//     col.innerHTML = `
+//       <div class="card">
+//         <div class="card-image">
+//           <img src="${item.image}" alt="${item.title}">
+//           <span class="card-title">${item.title}</span>
+//         </div>
+//         <div class="card-content">
+//           <p>Author: ${item.author}</p>
+//         </div>
+//       </div>
+//     `;
+
+//     container.appendChild(col);
+//   });
+// }
+
 function renderCards(items) {
   const container = document.getElementById('cards-container');
   container.innerHTML = '';
@@ -30,7 +54,10 @@ function renderCards(items) {
           <span class="card-title">${item.title}</span>
         </div>
         <div class="card-content">
-          <p>Author: ${item.author}</p>
+          <p><strong>Author:</strong> ${item.author}</p>
+          <p><strong>Category:</strong> ${item.category}</p>
+          <p><strong>Price:</strong> $${item.price?.toFixed ? item.price.toFixed(2) : item.price}</p>
+          <p><strong>Rating:</strong> ⭐ ${item.rating}</p>
         </div>
       </div>
     `;
@@ -38,6 +65,26 @@ function renderCards(items) {
     container.appendChild(col);
   });
 }
+
+
+// function createCard(item) {
+//   const col = document.createElement('div');
+//   col.className = 'col s12 m6 l4';
+
+//   col.innerHTML = `
+//     <div class="card">
+//       <div class="card-image">
+//         <img src="${item.image}" alt="${item.title}">
+//         <span class="card-title">${item.title}</span>
+//       </div>
+//       <div class="card-content">
+//         <p>Author: ${item.author}</p>
+//       </div>
+//     </div>
+//   `;
+
+//   return col;
+// }
 
 function createCard(item) {
   const col = document.createElement('div');
@@ -50,7 +97,10 @@ function createCard(item) {
         <span class="card-title">${item.title}</span>
       </div>
       <div class="card-content">
-        <p>Author: ${item.author}</p>
+        <p><strong>Author:</strong> ${item.author}</p>
+        <p><strong>Category:</strong> ${item.category}</p>
+        <p><strong>Price:</strong> $${item.price?.toFixed ? item.price.toFixed(2) : item.price}</p>
+        <p><strong>Rating:</strong> ⭐ ${item.rating}</p>
       </div>
     </div>
   `;
@@ -60,13 +110,24 @@ function createCard(item) {
 
 
 
+
 document.getElementById('submit-book-btn').addEventListener('click', () => {
   const title = document.getElementById('book_title').value.trim();
   const author = document.getElementById('book_author').value.trim();
   const image = document.getElementById('book_image').value.trim() || 'images/book2.jpg';
 
+  const category = document.getElementById('book_category').value.trim();
+  const price = parseFloat(document.getElementById('book_price').value);
+  const rating = parseFloat(document.getElementById('book_rating').value) || 0;
+
+
   if (!title || !author) {
     alert('Please fill in all required fields');
+    return;
+  }
+
+  if (!category || isNaN(price)) {
+    alert("Please enter a valid category and price");
     return;
   }
 
@@ -74,9 +135,12 @@ document.getElementById('submit-book-btn').addEventListener('click', () => {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      title: title,
-      author: author,
-      image: image
+      title,
+      author,
+      image,
+      category,
+      price,
+      rating
     })
   })
     .then(res => res.json())

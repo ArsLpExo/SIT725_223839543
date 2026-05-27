@@ -1,6 +1,13 @@
 const express = require('express');
+const mongoose = require('mongoose');
+const Book = require('./models/Book');
 const app = express();
 const port = 3000;
+
+mongoose.connect('mongodb://127.0.0.1:27017/bookLibraryDB')
+  .then(() => console.log("Connected to MongoDB"))
+  .catch(err => console.error("MongoDB connection error:", err));
+
 
 //JSON parser middleware
 app.use(express.json());
@@ -19,22 +26,51 @@ const items = [
 ];
 
 //POST route
-app.post('/api/items', (req, res) => {
-  const newBook = {
-    id: items.length + 1,
-    title: req.body.title,
-    author: req.body.author,
-    image: req.body.image
-  };
+// app.post('/api/items', (req, res) => {
+//   const newBook = {
+//     id: items.length + 1,
+//     title: req.body.title,
+//     author: req.body.author,
+//     image: req.body.image
+//   };
 
-  items.push(newBook);
-  res.json(newBook);
+//   items.push(newBook);
+//   res.json(newBook);
+// });
+
+app.post('/api/items', async (req, res) => {
+  try {
+    const { title, author, image, category, price, rating } = req.body;
+
+    const newBook = await Book.create({
+      title,
+      author,
+      image,
+      category,
+      price,
+      rating
+    });
+
+    res.status(201).json(newBook);
+  } catch (err) {
+    console.error("Error creating book:", err);
+    res.status(400).json({ error: err.message });
+  }
 });
+
+
+
 
 //GET REST endpoint
-app.get('/api/items', (req, res) => {
-  res.json(items);
+// app.get('/api/items', (req, res) => {
+//   res.json(items);
+// });
+
+app.get('/api/items', async (req, res) => {
+  const books = await Book.find();
+  res.json(books);
 });
+
 
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
