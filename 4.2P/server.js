@@ -55,7 +55,19 @@ app.get('/api/items', async (req, res) => {
   res.json(books);
 });
 
+// DELETE` route
+app.delete('/api/items/:id', async (req, res) => {
+  try {
+    await Book.findByIdAndDelete(req.params.id);
+    res.json({ message: "Book deleted" });
+  } catch (err) {
+    res.status(500).json({ error: "Failed to delete book" });
+  }
+});
 
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
 });
+
+
+

@@ -36,6 +36,9 @@ function renderCards(items) {
           <p><strong>Price:</strong> $${item.price?.toFixed ? item.price.toFixed(2) : item.price}</p>
           <p><strong>Rating:</strong> ⭐ ${item.rating}</p>
         </div>
+        <div class="card-action">
+        <a class="btn-small red delete-btn" data-id="${item._id}">Delete</a>
+        </div>
       </div>
     `;
 
@@ -60,6 +63,9 @@ function createCard(item) {
         <p><strong>Price:</strong> $${item.price?.toFixed ? item.price.toFixed(2) : item.price}</p>
         <p><strong>Rating:</strong> ⭐ ${item.rating}</p>
       </div>
+      <div class="card-action">
+        <a class="btn-small red delete-btn" data-id="${item._id}">Delete</a>
+        </div>
     </div>
   `;
 
@@ -116,4 +122,17 @@ document.getElementById('submit-book-btn').addEventListener('click', () => {
 });
 
 
+// DELETE BUTTON LISTENER GOES HERE
+document.addEventListener('click', async (e) => {
+  if (e.target.classList.contains('delete-btn')) {
+    const id = e.target.getAttribute('data-id');
+
+    await fetch(`/api/items/${id}`, {
+      method: 'DELETE'
+    });
+
+    // Remove card from UI
+    e.target.closest('.col').remove();
+  }
+});
 
