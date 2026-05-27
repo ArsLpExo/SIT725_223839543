@@ -1,7 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
   // Initialize Materialize modal
-  const modal = document.getElementById('add-book-modal');
-  M.Modal.init(modal);
+  const modals = document.querySelectorAll('.modal');
+  // M.Modal.init(document.getElementById('add-book-modal'));
+
+  M.Modal.init(modals);
 
   fetch('/api/items')
     .then(response => response.json())
@@ -56,10 +58,7 @@ function createCard(item) {
   return col;
 }
 
-document.getElementById('add-book-btn').addEventListener('click', () => {
-  const modal = M.Modal.getInstance(document.getElementById('add-book-modal'));
-  modal.open();
-});
+
 
 document.getElementById('submit-book-btn').addEventListener('click', () => {
   const title = document.getElementById('book_title').value.trim();
