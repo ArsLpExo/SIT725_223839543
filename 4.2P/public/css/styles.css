@@ -131,3 +131,72 @@
   box-shadow: 0 6px 20px rgba(0, 150, 136, 0.4);
   background: linear-gradient(135deg, #009688 0%, #00796b 100%);
 }
+
+/* === Modern Top Navigation Bar (Materialize override) === */
+.top-nav {
+  background-color: #1e1e2f;
+  height: 70px;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+}
+
+.custom-nav {
+  display: flex;
+  justify-content: space-between; /* THIS is the key */
+  align-items: center;
+  width: 100%;
+}
+
+/* LEFT SIDE */
+.brand-area {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav-logo {
+  height: 40px;
+}
+
+.brand-text {
+  font-size: 1.6rem;
+  color: #e0e0e0;
+  font-weight: 600;
+}
+
+/* RIGHT SIDE */
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  list-style: none;
+  margin: 0;
+}
+
+.nav-right li a {
+  color: #e0e0e0 !important;
+  font-size: 1.1rem;
+}
+
+/* SEARCH BAR ON RIGHT */
+.search-li {
+  display: flex;
+  align-items: center;
+}
+
+.search-input {
+  width: 180px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  background-color: #2c2c3e;
+  color: #e0e0e0;
+}
+
+/* PROFILE ICON */
+.profile-icon i {
+  font-size: 32px;
+  color: #e0e0e0;
+}
