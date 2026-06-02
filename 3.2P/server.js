@@ -8,7 +8,7 @@ app.use(express.json());
 // Serve static files from public folder
 app.use(express.static('public'));
 
-// Sample data (change to your domain)
+// Sample data (book domain)
 const items = [
   {
     id: 1,
