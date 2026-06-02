@@ -1,10 +1,12 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const Book = require('./models/Book');
+const path = require('path');
+
 const app = express();
 const port = 3000;
 
-mongoose.connect('mongodb://127.0.0.1:27017/bookLibraryDB')
+mongoose.connect('mongodb://127.0.0.1:27017/booksdb')
   .then(() => console.log("Connected to MongoDB"))
   .catch(err => console.error("MongoDB connection error:", err));
 
@@ -25,7 +27,7 @@ const items = [
   }
 ];
 
-//POST route
+// POST route
 app.post('/api/items', async (req, res) => {
   try {
     const { title, author, image, category, price, rating } = req.body;
@@ -45,9 +47,6 @@ app.post('/api/items', async (req, res) => {
     res.status(400).json({ error: err.message });
   }
 });
-
-
-
 
 //GET REST endpoint
 app.get('/api/items', async (req, res) => {
@@ -71,3 +70,15 @@ app.listen(port, () => {
 
 
 
+app.put('/api/items/:id', async (req, res) => {
+  try {
+    const updated = await Book.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { returnDocument: 'after' }
+    );
+    res.json(updated);
+  } catch (err) {
+    res.status(500).json({ error: "Failed to update book" });
+  }
+});
