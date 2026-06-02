@@ -5,9 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   M.Modal.init(modals);
 
-  
-
-  fetch('/api/items')
+    fetch('/api/items')
     .then(response => response.json())
     .then(data => {
       renderCards(data);
