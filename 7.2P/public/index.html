@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Real-Time Collaborative Mood Board</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-container">
+    <h1>Real-Time Collaborative Mood Board</h1>
+    <p class="subtitle">
+      Click how you feel. Watch the live mood bubbles update as others join.
+    </p>
+
+    <div class="mood-buttons">
+      <button class="mood-btn happy" data-mood="Happy">😊 Happy</button>
+      <button class="mood-btn stressed" data-mood="Stressed">😫 Stressed</button>
+      <button class="mood-btn neutral" data-mood="Neutral">😐 Neutral</button>
+      <button class="mood-btn tired" data-mood="Tired">😴 Tired</button>
+    </div>
+
+    <div class="bubbles-container">
+      <div class="bubble-wrapper">
+        <div id="bubble-happy" class="bubble happy-bubble"></div>
+        <span class="bubble-label">Happy: <span id="count-happy">0</span></span>
+      </div>
+      <div class="bubble-wrapper">
+        <div id="bubble-stressed" class="bubble stressed-bubble"></div>
+        <span class="bubble-label">Stressed: <span id="count-stressed">0</span></span>
+      </div>
+      <div class="bubble-wrapper">
+        <div id="bubble-neutral" class="bubble neutral-bubble"></div>
+        <span class="bubble-label">Neutral: <span id="count-neutral">0</span></span>
+      </div>
+      <div class="bubble-wrapper">
+        <div id="bubble-tired" class="bubble tired-bubble"></div>
+        <span class="bubble-label">Tired: <span id="count-tired">0</span></span>
+      </div>
+    </div>
+
+    <p class="footer-note">
+      This demo uses Socket.IO to broadcast mood updates in real time to all connected users.
+    </p>
+  </div>
+
+  <!-- Load socket.io BEFORE scripts.js -->
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="scripts.js"></script>
+</body>
+</html>

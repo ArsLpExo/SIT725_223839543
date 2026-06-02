@@ -1,0 +1,161 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+body {
+  background: radial-gradient(circle at top, #1f2933, #020617);
+  color: #f9fafb;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.app-container {
+  background: rgba(15, 23, 42, 0.9);
+  border-radius: 16px;
+  padding: 24px 28px 32px;
+  max-width: 800px;
+  width: 100%;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 8px;
+  font-size: 1.8rem;
+}
+
+.subtitle {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #cbd5f5;
+  font-size: 0.95rem;
+}
+
+.mood-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.mood-btn {
+  border: none;
+  padding: 10px 18px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #0b1120;
+  transition: transform 0.12s ease, box-shadow 0.12s ease, opacity 0.12s ease;
+}
+
+.mood-btn:hover {
+  transform: translateY(-1px) scale(1.03);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35);
+  opacity: 0.95;
+}
+
+.mood-btn:active {
+  transform: translateY(0) scale(0.98);
+  box-shadow: none;
+}
+
+/* Button colours */
+.mood-btn.happy {
+  background: linear-gradient(135deg, #facc15, #f97316);
+}
+
+.mood-btn.stressed {
+  background: linear-gradient(135deg, #f97373, #ef4444);
+}
+
+.mood-btn.neutral {
+  background: linear-gradient(135deg, #9ca3af, #6b7280);
+}
+
+.mood-btn.tired {
+  background: linear-gradient(135deg, #6366f1, #4f46e5);
+}
+
+/* Bubbles section */
+.bubbles-container {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+  margin-bottom: 18px;
+}
+
+.bubble-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.bubble {
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  background: #4b5563;
+  position: relative;
+  transition: width 0.25s ease, height 0.25s ease, box-shadow 0.25s ease;
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Bubble colours */
+.happy-bubble {
+  background: radial-gradient(circle at 30% 30%, #fef9c3, #facc15);
+  box-shadow: 0 0 18px rgba(250, 204, 21, 0.6);
+}
+
+.stressed-bubble {
+  background: radial-gradient(circle at 30% 30%, #fecaca, #ef4444);
+  box-shadow: 0 0 18px rgba(239, 68, 68, 0.6);
+}
+
+.neutral-bubble {
+  background: radial-gradient(circle at 30% 30%, #e5e7eb, #6b7280);
+  box-shadow: 0 0 18px rgba(107, 114, 128, 0.6);
+}
+
+.tired-bubble {
+  background: radial-gradient(circle at 30% 30%, #e0e7ff, #4f46e5);
+  box-shadow: 0 0 18px rgba(79, 70, 229, 0.6);
+}
+
+.bubble-label {
+  font-size: 0.85rem;
+  color: #e5e7eb;
+}
+
+/* Floating animation */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.footer-note {
+  text-align: center;
+  font-size: 0.8rem;
+  color: #9ca3af;
+}
+
+/* Responsive */
+@media (max-width: 700px) {
+  .bubbles-container {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
