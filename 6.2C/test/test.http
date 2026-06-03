@@ -1,0 +1,15 @@
+### Valid forecast
+POST http://localhost:3000/api/forecast
+Content-Type: application/json
+
+{
+  "sales": [100, 120, 130, 150]
+}
+
+### Invalid forecast (not an array)
+POST http://localhost:3000/api/forecast
+Content-Type: application/json
+
+{
+  "sales": "hello"
+}
